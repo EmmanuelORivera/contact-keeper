@@ -1,0 +1,8 @@
+to deploy on heroku
+heroku login
+heroku create
+git add .
+git commit -m "something"
+heroku git:remote  "SOMETHING"
+git push heroku master
+heroku open
