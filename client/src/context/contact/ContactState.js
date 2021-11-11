@@ -14,6 +14,7 @@ import {
   CLEAR_FILTER,
   CONTACT_ERROR,
 } from "../types";
+import { apiDomain } from "../../utils/apiDomain";
 
 const ContactState = (props) => {
   const initialState = {
@@ -28,7 +29,7 @@ const ContactState = (props) => {
   // Get Contacts
   const getContacts = async () => {
     try {
-      const res = await axios.get("/api/contacts");
+      const res = await axios.get(`${apiDomain()}/api/contacts`);
       dispatch({ type: GET_CONTACTS, payload: res.data });
     } catch (err) {
       dispatch({ type: CONTACT_ERROR, payload: err.response.msg });
@@ -42,7 +43,11 @@ const ContactState = (props) => {
       },
     };
     try {
-      const res = await axios.post("/api/contacts", contact, config);
+      const res = await axios.post(
+        `${apiDomain()}/api/contacts`,
+        contact,
+        config
+      );
       dispatch({ type: ADD_CONTACT, payload: res.data });
     } catch (err) {
       dispatch({ type: CONTACT_ERROR, payload: err.response.msg });
@@ -57,7 +62,7 @@ const ContactState = (props) => {
     };
     try {
       const res = await axios.put(
-        `/api/contacts/${contact._id}`,
+        `${apiDomain()}/api/contacts/${contact._id}`,
         contact,
         config
       );
@@ -69,7 +74,7 @@ const ContactState = (props) => {
   //Delete Contact
   const deleteContact = async (id) => {
     try {
-      await axios.delete(`/api/contacts/${id}`);
+      await axios.delete(`${apiDomain()}/api/contacts/${id}`);
 
       dispatch({ type: DELETE_CONTACT, payload: id });
     } catch (err) {
