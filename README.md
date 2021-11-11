@@ -2,6 +2,10 @@
 
 > Full stack MERN contact manager with React hooks, context & JWT authentication.
 
+## Watch this project deployed on heroku
+
+[https://contact-keeper95.herokuapp.com/](https://contact-keeper95.herokuapp.com/)
+
 ## Usage
 
 Install dependencies
